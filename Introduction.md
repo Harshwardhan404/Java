@@ -103,3 +103,118 @@ C:\Users\Your Name>java Main        > to run your class
  - you cannot change the datatype once declared.
  - you cannot just declare var ie -> var a; and later assign value to it line normal variables.
  
+
+# Type Casting
+
+Converting One datatype into another - 
+
+There are 2 type of casting in Java
+
+> Widening Casting (automatic) - converting a smaller type to a larger type size
+    byte -> short -> char -> int -> long -> float -> double
+
+> Narrowing Casting (manual) - converting a larger type to a smaller type size
+    double -> float -> long -> int -> char -> short -> byte
+
+```Example```
+    double myDouble = 9.78d;
+    int myInt = (int) myDouble; // Manual casting: double to int
+
+    System.out.println(myDouble); // Outputs 9.78
+    System.out.println(myInt);    // Outputs 9
+
+
+# Operators in Java
+
+
+Java divides the operators into the following groups:
+
+>Arithmetic operators
+>Assignment operators
+>Comparison operators
+>Logical operators
+>Bitwise operators
+
+
+- Arithmetic Operators
+
+| Operator | Name           | Description                            | Example |
+|----------|----------------|----------------------------------------|---------|
+| +        | Addition       | Adds together two values               | x + y   |
+| -        | Subtraction    | Subtracts one value from another       | x - y   |
+| *        | Multiplication | Multiplies two values                  | x * y   |
+| /        | Division       | Divides one value by another           | x / y   |
+| %        | Modulus        | Returns the division remainder         | x % y   |
+| ++       | Increment      | Increases the value of a variable by 1 | ++x     |
+| --       | Decrement      | Decreases the value of a variable by 1 | --x     |
+
+
+
+- Assignment Operators
+
+Assuming x = 10
+
+| Operator | Example |   Same As  | Result |
+|:--------:|:-------:|:----------:|:------:|
+| =        | x = 5   | x = 5      | 5      |
+| +=       | x += 3  | x = x + 3  | 13     |
+| -=       | x -= 3  | x = x - 3  | 7      |
+| *=       | x *= 3  | x = x * 3  | 30     |
+| /=       | x /= 3  | x = x / 3  | 3      |
+| %=       | x %= 3  | x = x % 3  | 1      |
+| &=       | x &= 3  | x = x & 3  | 2      |
+| \|=      | x \|= 3 | x = x \| 3 | 11     |
+| ^=       | x ^= 3  | x = x ^ 3  | 9      |
+| >>=      | x >>= 3 | x = x >> 3 | 1      |
+| <<=      | x <<= 3 | x = x << 3 | 80     |
+
+
+
+- Comparasion Operators
+
+
+| Operator | Name                     | Example |
+|----------|--------------------------|---------|
+| ==       | Equal to                 | x == y  |
+| !=       | Not equal                | x != y  |
+| >        | Greater than             | x > y   |
+| <        | Less than                | x < y   |
+| >=       | Greater than or equal to | x >= y  |
+| <=       | Less than or equal to    | x <= y  |
+
+
+- Logical Operators
+
+Assuming x = 10
+
+| Operator |     Name    |                   Description                  |       Example      | Result |
+|:--------:|:-----------:|:----------------------------------------------:|:------------------:|:------:|
+| &&       | Logical AND | Returns true if both statements are true       | x < 5 && x < 10    | false  |
+| \|\|     | Logical OR  | Returns true if at least one statement is true | x < 5 \|\| x < 4   | false  |
+| !        | Logical NOT | Reverses the result                            | !(x < 5 && x < 10) | true   |
+
+
+
+Order of Precedence 
+
+
+Order of Operations
+Here are some common operators, from highest to lowest priority:
+
+- () - Parentheses
+- *, /, % - Multiplication, Division, Modulus
+- +, - - Addition, Subtraction
+- >, <, >=, <= - Comparison
+- ==, != - Equality
+- && - Logical AND
+- || - Logical OR
+- = - Assignment
+
+
+> Subtraction and addition are done from left to right, unless you add parentheses:
+
+The Engine will follow the Precedence first in above given order and then if it's in same level
+then the engine will follow from left to right.
+
+ie for -> Subtraction and addition are done from left to right, unless you add parentheses.
+
