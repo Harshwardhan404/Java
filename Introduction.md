@@ -321,24 +321,24 @@ if (condition) {
 
 The else statement lets you run a block of code when the condition in the if statement is false.
 
-if (condition) {
+``` if (condition) {
   // block of code to be executed if the condition is true
 } else {
   // block of code to be executed if the condition is false
-}
+} ```
 
 
 3) if - else if - else
 
 Use the else if statement to specify a new condition to test if the first condition is false.
 
-if (condition1) {
+``` if (condition1) {
   // block of code to be executed if condition1 is true
 } else if (condition2) {
   // block of code to be executed if condition1 is false and condition2 is true
 } else {
   // block of code to be executed if both conditions are false
-}
+} ```
 
 
 4) Short Hand if...else
@@ -354,12 +354,12 @@ You can also place an if statement inside another if. This is called a nested if
 A nested if lets you check for a condition only if another condition is already true.
 
 
-if (condition1) {
+```if (condition1) {
   // code to run if condition1 is true
   if (condition2) {
     // code to run if both condition1 and condition2 are true
   }
-}
+} ```
 
 
 6) Logical Operators
@@ -377,7 +377,7 @@ Instead of writing many if..else statements, you can use the switch statement.
 
 Think of it like ordering food in a restaurant: If you choose number 1, you get Pizza. If you choose 2, you get a Burger. If you choose 3, you get Pasta. Otherwise, you get nothing.
 
-switch(expression) {
+```switch(expression) {
   case x:
     // code block
     break;
@@ -386,7 +386,7 @@ switch(expression) {
     break;
   default:
     // code block
-}
+}```
 
 
 example -> 
@@ -427,9 +427,9 @@ There are 3 types of loops in java
 
 The while loop repeats a block of code as long as the specified condition is true:
 
-while (condition) {
+```while (condition) {
   // code block to be executed
-}
+} ```
 
 A while loop may never run if the condition is false from the start. the do while loop, which always runs the code at least once before checking the condition.
 
@@ -438,10 +438,10 @@ A while loop may never run if the condition is false from the start. the do whil
 
 The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true. Then it will repeat the loop as long as the condition is true.
 
-do {
+```do {
   // code block to be executed
 }
-while (condition);
+while (condition); ```
 
 
 ## for loop
@@ -449,14 +449,14 @@ while (condition);
 When you know exactly how many times you want to loop through a block of code, 
 use the for loop instead of a while loop:
 
-for (statement 1; statement 2; statement 3) {
+```for (statement 1; statement 2; statement 3) {
   // code block to be executed
-}
+} ```
 
 
-for(int i = 0; i<=10; i++){
+```for(int i = 0; i<=10; i++){
     System.out.println(i);
-}
+} ```
 
 result -> 0,1,2,3,4,5,6,7,8,9,10
 
@@ -468,14 +468,14 @@ result -> 0,1,2,3,4,5,6,7,8,9,10
 The "inner loop" will be executed one time for each iteration of the "outer loop":
 
 // Outer loop
-for (int i = 1; i <= 2; i++) {
+```for (int i = 1; i <= 2; i++) {
   System.out.println("Outer: " + i); // Executes 2 times
   
   // Inner loop
   for (int j = 1; j <= 3; j++) {
     System.out.println(" Inner: " + j); // Executes 6 times (2 * 3)
   }
-} 
+} ```
 
 >outer loop runs 2 times, whereas inner loop runs 6 times (3 iteration for 1 outer loop iteration.)
 
@@ -483,15 +483,15 @@ for (int i = 1; i <= 2; i++) {
 
 There is also a "for-each" loop, which is used exclusively to loop through elements in an array.
 
-for (type variableName : arrayName) {
+```for (type variableName : arrayName) {
   // code block to be executed
-}
+} ```
 
 example ->
 
-String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+```String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
 
 for (String car : cars) {
   System.out.println(car);
-}
+} ```
 
