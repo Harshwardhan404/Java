@@ -501,3 +501,159 @@ for (String car : cars) {
   System.out.println(car);
 }
 ```
+
+
+# Break and Continue
+
+The break statement can also be used to jump out of a loop or switch statements.
+
+example 1 ->
+
+This example skips the value of 4:
+
+```java 
+for (int i = 0; i < 10; i++) {
+  if (i == 4) {
+    break;
+  }
+  System.out.println(i);
+}
+```
+
+example 2 ->
+
+This example skips the value of 4:
+
+```java
+for (int i = 0; i < 10; i++) {
+  if (i == 4) {
+    continue;
+  }
+  System.out.println(i);
+}
+```
+
+> break statement stops the loop and breaks when the given condition is true.
+> continue statement is used to skip the current iteration and move on to next.
+
+
+
+# Java Arrays
+
+Arrays are used to store multiple values in a single variable, instead of declaring separate variables for each value.
+To declare an array, define the variable type with square brackets [ ] :
+
+example ->
+ ```java 
+String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+```
+
+you can access the elements of an array by -
+
+cars[0]; // prints Volvo
+
+you can also change value through index in array -
+
+cars[0] = "Alto";   // first element of array becomes Alto
+
+to find the lenghth of an array use 
+
+cars.length;  -> not a method of class array (.length) is property of a array.
+
+> [!WARNING]
+  The array which are provided by java are low level high performance and thus does not provides methods.
+  if you want to use methods and manipulate arrays, you can import java.util.Array class and use methods of it
+  or you can use ArrayList provided by java to perform operations.
+
+
+## differnt ways to initilize an array.
+
+- using new keyword
+
+    ```java
+    String[] cars = new String[4]; // size is 4
+    ```
+
+- declaring array 
+
+    ```java
+    String[] cars = new String[] {"Volvo", "BMW", "Ford", "Mazda"};
+    ```
+    same as
+    ```java
+    String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+    ```
+
+## Looping through arrays
+
+
+- you can use for loop or for- each loop to loop through arrays
+
+example ->
+
+```java
+// for loop
+String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+
+for (int i = 0; i < cars.length; i++) {
+  System.out.println(cars[i]);
+} 
+
+ // for each loop
+String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+
+for (String car : cars) {
+  System.out.println(car);
+}
+```
+
+> when you want indexes with arrays use for loop, when you just want value use for - each loop.
+
+
+## Multidimensional Arrays
+
+ A multidimensional array is an array that contains other arrays.
+ You can use it to store data in a table with rows and columns.
+
+example - 
+
+```java
+int[][] myNumbers = { {1, 4, 2}, {3, 6, 8} };
+```
+
+- Access Elements
+To access an element of a two-dimensional array, you need two indexes: the first for the row, and the second for the column.
+    
+```java
+int[][] myNumbers = { {1, 4, 2}, {3, 6, 8} };
+System.out.println(myNumbers[1][2]); // Outputs 8
+```
+
+- Looping through an Multi- dimensional array
+
+> for loop
+```java
+int[][] myNumbers = { {1, 4, 2}, {3, 6, 8, 5, 2} };
+
+for(int i =0; i< myNumbers.length; i++){
+
+    System.out.println("Values at index " +i);
+    for(int j =0; j< myNumbers[i].length; j++){
+        System.out.println(myNumbers[i][j]);
+    }
+ }
+```
+
+> for each loop
+
+```java
+int[][] myNumbers = { {1, 4, 2}, {3, 6, 8, 5, 2} };
+
+for (int[] row : myNumbers) {
+  for (int num : row) {
+    System.out.println(num);
+  }
+}
+```
+
+

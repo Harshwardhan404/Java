@@ -37,21 +37,34 @@ public class Strings {
 
 
 
-for (int i = 1; i <= 2; i++) {
-  System.out.println("Outer: " + i); 
+// for (int i = 1; i <= 2; i++) {
+//   System.out.println("Outer: " + i); 
   
-  // Inner loop
-  for (int j = 1; j <= 3; j++) {
-    System.out.println(" Inner: " + j); 
-  }
-} 
+//   // Inner loop
+//   for (int j = 1; j <= 3; j++) {
+//     System.out.println(" Inner: " + j); 
+//   }
+// } 
+
+
+// Create a program with a list of numbers where you want to skip negative values, but stop completely if you find a zero:
+
+
+int[] numbers = {3, -1, 7, 0, 9};
 
 
 
+for(int num : numbers){
+    if(num<0){
+        continue;
+    }
 
+    if(num ==0){
+        break;
+    }
 
-
-
+    System.out.println(num);
+}
 
 
 

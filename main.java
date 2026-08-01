@@ -54,12 +54,12 @@ public class Main {
 
 
 
-int[] arr = {1,2,3,45,6};
+// int[] arr = {1,2,3,45,6};
 
 
-for(int ar : arr){
-    System.out.println(ar);
-}
+// for(int ar : arr){
+//     System.out.println(ar);
+// }
 
 
 
@@ -77,6 +77,29 @@ for(int ar : arr){
 // for(int i = 1; i<=10; i++){
 //     System.out.println(i);
 // }
+
+// int[][] myNumbers = { {1, 4, 2}, {3, 6, 8, 5, 2} };
+
+
+
+// for(int i =0; i< myNumbers.length; i++){
+
+//     System.out.println("Values at index " +i);
+//     for(int j =0; j< myNumbers[i].length; j++){
+//         System.out.println(myNumbers[i][j]);
+//     }
+
+// }
+
+
+int[][] myNumbersa = { {1, 4, 2}, {3, 6, 8, 5, 2} };
+
+for (int[] row : myNumbersa) {
+  for (int num : row) {
+    System.out.println(num);
+  }
+}
+
 
 
  }
