@@ -47,9 +47,8 @@ public class Oops {
         // s3.printInfo();
 
 
-bank.Bank acc1 = new bank.Bank();
 
-acc1.trial();
+
 
 
     }

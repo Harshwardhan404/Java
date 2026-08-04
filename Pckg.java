@@ -1,7 +1,11 @@
+import bank.*;
+
 public class Pckg {
+  public static void main(String[] args) {
 
+        bank.Account account = new bank.Account();
+        account.name = "Raj";
+        
+    }
 
-    bank.Bank b1 = new bank.Bank();
-
-    
 }
