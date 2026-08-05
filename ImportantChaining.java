@@ -7,6 +7,13 @@ class Child extends ImportantChaining{
 
 }
 
+abstract class FirstOne {
+
+     public void printSome(){
+        System.out.println("First one");
+    }
+}
+
 public class ImportantChaining {
 
     String name;
@@ -22,6 +29,6 @@ public class ImportantChaining {
 
         Child c1 = new Child();
         System.out.println(c1.name);
-        
+      
     }
 }

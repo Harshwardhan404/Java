@@ -1,4 +1,3 @@
-import bank.*;
 
 public class Pckg {
   public static void main(String[] args) {

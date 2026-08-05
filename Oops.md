@@ -183,8 +183,8 @@ it also gives you ability to partially copy full copy or change values according
 
 | Type                      | Achieved using     | Decision happens       | In action during |
 | ------------------------- | ------------------ | ---------------------- | ---------------- |                
-| Compile-time polymorphism | Method overloading | During compilation     |                  |
-| Runtime polymorphism      | Method overriding  | While the program runs |                  |
+| Compile-time polymorphism | Method overloading | During compilation     | Single class     |
+| Runtime polymorphism      | Method overriding  | While the program runs | Inheritance      |
 
 
 ## Compile time polymorphism
@@ -259,10 +259,8 @@ rules for complile time polymorphism
 
 # Inheritance
 
-
 When one class (child) inherties the properites and methods of another class (parent) is called as inheritance.
 It increases the reusablity of the code.
-
 
 Types of Inheritance 
 
@@ -272,6 +270,10 @@ Types of Inheritance
 - Hybrid Inheritance
 - Multiple Inhertance (Achieved by Interfaces).
 
+>[!WARNING]
+ When you create a child class object inheritaed from the parent class.
+ the constructor of parent class will be called and then 
+ child class constructor will be called.
 
 ## Single level inheritance
 
@@ -673,6 +675,11 @@ Encapsulation provides with validation, access and modification permissions.
 it makes your classes, secure, validate against errors.
 Encapsulation means keeping a class’s data private and allowing controlled access through methods such as getters and setters.
 
+The difference between Encapsulation and Abstraction is, 
+
+>[!WARNING]
+ Encapsulation protects an object’s data and controls how it is accessed or modified, while abstraction hides unnecessary implementation details and exposes only essential functionality.
+
 The simplest definition to remember is:
 > Encapsulation is protecting an object’s internal data and allowing access only through safe, controlled operations.
 
@@ -771,15 +778,32 @@ public class EncapsulationDemo {
 
 # Abstraction
 
+Abstraction means showing only what something does while hiding the details of how it does it.
+Example: You call car.start() to start a car without needing to know how the engine works internally.
+
 Abstraction can be acheived by 
 1) Abstract keyword (for class/methods/properties)
 2) Interfaces
-
 
 >[!WARNING]
  When you create a child class object inheritaed from the parent class.
  the constructor of parent class will be called and then 
  child class constructor will be called.
+
+>[!WARNING]
+ Encapsulation protects an object’s data and controls how it is accessed or modified, while abstraction hides unnecessary implementation details and exposes only essential functionality.
+
+
+## Abstract keyword
+
+1) Abstract class = incomplete parent class.
+2) Abstract method = method without implementation.
+3) You cannot create an abstract class object directly.
+4) A child class must implement its parent’s abstract methods.
+5) An abstract class can also contain normal methods, fields and constructors.
+   abstract helps achieve abstraction.
+
+In short: abstract means the child class must complete the missing implementation.
 
 ```java
 abstract class Animal {
@@ -808,13 +832,161 @@ public class OOPS {
 
 ```
 
--> about super keyword
+so Abstract class is like any other class but starts with `abstract` keyword, if the class is made as abstract
+then we cannot create objects of the class.
+
+Also if the method is abstract in the class, then we cannot define body for abstract method.
+if the method in class is not abstract then we can perform logic in method and we can use them in child classes.
+example ->
+```java
+ abstract class Human {
+     public void callPerson(){
+        System.out.println("call someone");
+     };
+    
+}
+
+class Raj extends Human {
+}
+
+public class AbstractionJ {
+    public static void main(String[] args) {
+     
+    Raj r1 = new Raj();
+    r1.callPerson();
+
+    }
+}
+```
 
 
--> interfaces
+## Interfaces
+
+- Interface is more strict version of Abstration, if the class is declared as `interface` then all the methods 
+defined in the interface should be used by child classes.
+- we cannot create objects of Interfaces.
+- Create an interface using interface.
+- A class uses an interface with implements.
+- You cannot create an interface object directly.
+- Implementing classes must provide the required methods.
+- Implemented interface methods must be public.
+- An interface does not have constructors or normal instance fields.
+- A class can implement multiple interfaces.
+- Interface fields are automatically public static final constants.
+- Interfaces can also contain default, static, and private methods.
+
+
+```java
+// One interface can extend another interface
+interface Chargeable {
+
+    // Abstract method
+    void charge();
+}
+
+interface SmartDevice extends Chargeable {
+
+    // Automatically: public static final
+    String CATEGORY = "Electronic Device";
+
+    // Automatically: public abstract
+    void turnOn();
+    void turnOff();
+
+    // Default method: contains implementation
+    default void restart() {
+        log("Restarting device");
+
+        turnOff();
+        turnOn();
+    }
+
+    // Static method: belongs to the interface
+    static void showInformation() {
+        System.out.println("SmartDevice represents a smart electronic device");
+    }
+
+    // Private method: used only inside the interface
+    private void log(String message) {
+        System.out.println("[SmartDevice] " + message);
+    }
+}
+
+interface InternetEnabled {
+    void connectToInternet();
+}
+
+// A class can implement multiple interfaces
+class SmartPhone implements SmartDevice, InternetEnabled {
+
+    @Override
+    public void turnOn() {
+        System.out.println("Phone turned ON");
+    }
+
+    @Override
+    public void turnOff() {
+        System.out.println("Phone turned OFF");
+    }
+
+    @Override
+    public void charge() {
+        System.out.println("Phone is charging");
+    }
+
+    @Override
+    public void connectToInternet() {
+        System.out.println("Phone connected to Wi-Fi");
+    }
+}
+
+public class InterfaceDemo {
+
+    public static void main(String[] args) {
+        SmartPhone phone = new SmartPhone();
+
+        // Interface reference
+        SmartDevice device = phone;
+        InternetEnabled internetDevice = phone;
+
+        System.out.println(SmartDevice.CATEGORY);
+        SmartDevice.showInformation();
+        device.turnOn();
+        device.restart();
+        device.charge();
+
+        internetDevice.connectToInternet();
+
+        // Not allowed:
+        // SmartDevice object = new SmartDevice();
+    }
+}
+```
+
+>[!IMPORTANT]
+ @override tells java that ->
+ This method is replacing a method inherited from a parent class or interface.
+
+
+
+
+
+
+
+
+
 
 
 -> static
    where is static used -> 4 ways. memeory is assigned once.
 - method overloading
+
+
+
+
+
+# Inheritance  -> done -> single, multi level, hierarchial, hybrid, multiple(interfaces)
+# polymorphism -> method overloading/ method overriding
+# abstraction -> abstract/ interfaces
+# incapsulation -> getters setters/ validation/ security
 
