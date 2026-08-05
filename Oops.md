@@ -187,7 +187,7 @@ it also gives you ability to partially copy full copy or change values according
 | Runtime polymorphism      | Method overriding  | While the program runs | Inheritance      |
 
 
-## Compile time polymorphism
+## Compile time polymorphism (Method overloading)
 
 Same method name but different parameters:
 One method can be used to perform different tasks, the compiler picks the suitable method by checking and comparing
@@ -242,8 +242,6 @@ public class PolymorphismJ {
         student.printInfo("Ajay", 12, "Maths"); // Name : Ajay   // Age: 12  // Subject: Maths
     }
 }
-
-
 ```
 rules for complile time polymorphism 
 
@@ -256,6 +254,122 @@ rules for complile time polymorphism
     Parameter names
     Access modifier such as public or private
 
+
+## run time Polymorphism (Method overriding)
+
+A child class provides its own implementation of a method that already exists in its parent class.
+It allows the child class to change the inherited behaviour.
+
+Conditions for method overriding
+
+1) Overriding requires inheritance or interface implementation.
+2) The method name and parameters must match.
+3) The return type must be the same or covariant.
+4) The child cannot reduce method accessibility.
+5) Use @Override every time.
+6) final methods cannot be overridden.
+7) Private methods are not overridden.
+8) Static methods are hidden, not overridden.
+9) Constructors and fields are not overridden.
+10) A child cannot add a broader checked exception.
+11) Overridden methods are selected using the actual object type at runtime.
+12) Use super.method() to call the parent implementation.
+
+Easy definition: Method overriding means a child class replaces an inherited method with its own implementation.
+
+```java
+class Animal {
+
+    protected String name;
+
+    Animal(String name) {
+        this.name = name;
+    }
+
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+
+    public void introduce() {
+        System.out.println("My name is " + name);
+    }
+
+    public void sleep() {
+        System.out.println(name + " is sleeping");
+    }
+}
+
+class Dog extends Animal {
+
+    Dog(String name) {
+        super(name);
+    }
+
+    @Override
+    public void sound() {
+        System.out.println(name + " barks");
+    }
+
+    @Override
+    public void introduce() {
+        // Calling the parent implementation
+        super.introduce();
+        System.out.println("I am a dog");
+    }
+
+    public void fetch() {
+        System.out.println(name + " fetches the ball");
+    }
+}
+
+class Cat extends Animal {
+
+    Cat(String name) {
+        super(name);
+    }
+
+    @Override
+    public void sound() {
+        System.out.println(name + " meows");
+    }
+}
+
+public class MethodOverridingExample {
+
+    public static void main(String[] args) {
+
+        // Parent reference containing child objects
+        Animal animal1 = new Dog("Bruno");
+        Animal animal2 = new Cat("Luna");
+
+        // Java executes methods based on actual object type
+        animal1.sound();
+        animal2.sound();
+
+        animal1.introduce();
+
+        // sleep() is inherited without overriding
+        animal1.sleep();
+        animal2.sleep();
+
+        // Dog-specific method
+        Dog dog = new Dog("Rocky");
+        dog.fetch();
+
+        // Not allowed because Animal does not have fetch():
+        // animal1.fetch();
+    }
+}
+```
+```
+Bruno barks
+Luna meows
+My name is Bruno
+I am a dog
+Bruno is sleeping
+Luna is sleeping
+Rocky fetches the ball
+```
 
 # Inheritance
 
@@ -461,6 +575,87 @@ public class Main{
     }
 }
 
+```
+
+## Super keyword
+
+super refers to the immediate parent class, while super() calls the immediate parent class constructor.
+
+super()       → Parent constructor
+super.field   → Parent field
+super.method() → Parent method
+
+If the parent requires a parameterized constructor, you have to declare the child constructor as parameteriezed
+and pass it the arguments required by parent constructor.
+
+If you have 2,3 or 4 level of hierarchy in classes, the the last child will have to call all other 3 classes 
+constructor before calling his constructor.
+
+A consolidated example of using super() keyword, which is used to refer immeidate parent.
+
+```java
+
+class Person {
+
+    String type = "Person";
+    private String name;
+
+    Person(String name) {
+        this.name = name;
+        System.out.println("Person constructor executed");
+    }
+
+    void introduce() { 
+        System.out.println("My name is " + name);
+    }
+}
+
+class Employee extends Person {
+
+    String type = "Employee";
+    private int employeeId;
+
+    Employee(String name, int employeeId) {
+
+        super(name);
+        this.employeeId = employeeId;
+        System.out.println("Employee constructor executed");
+    }
+
+    @Override
+    void introduce() {
+        // Calling the parent method
+        super.introduce();
+
+        System.out.println(
+            "My employee ID is " + employeeId
+        );
+    }
+
+    void displayTypes() {
+        System.out.println("Child type: " + this.type);
+        System.out.println("Parent type: " + super.type);
+    }
+}
+
+public class SuperDemo {
+
+    public static void main(String[] args) {
+        Employee employee = new Employee("Harsh", 101);
+
+        employee.introduce();
+        employee.displayTypes();
+    }
+}
+```
+```
+output
+Person constructor executed
+Employee constructor executed
+My name is Harsh
+My employee ID is 101
+Child type: Employee
+Parent type: Person
 ```
 
 # Packages
@@ -966,23 +1161,46 @@ public class InterfaceDemo {
 >[!IMPORTANT]
  @override tells java that ->
  This method is replacing a method inherited from a parent class or interface.
+ Overriding may work without @Override, but you should always use it because it catches mistakes.
 
 
 
+# Static Keyword
+
+The static keyword means:
+A member belongs to the class itself, rather than to each individual object.
+
+Without static, every object gets its own copy. With static, all objects share the same class-level member.
 
 
+Where static can be used
+
+| Static feature      | Purpose                                            |
+| ------------------- | -------------------------------------------------- |
+| Static variable     | Stores one value shared by all objects             |
+| Static method       | Can be called without creating an object           |
+| Static block        | Runs when the class is initialized                 |
+| Static nested class | Nested class that does not require an outer object |
+| Static import       | Uses static members without writing the class name |
 
 
+  Important rules to remember
 
-
-
-
--> static
-   where is static used -> 4 ways. memeory is assigned once.
-- method overloading
-
-
-
+- static means the member belongs to the class.
+- Static fields are shared by all objects.
+- Static methods can be called without creating an object.
+- Call static members using the class name.
+- Static methods cannot directly access instance members.
+- Static methods cannot use this or super.
+- Static blocks run when the class is initialized.
+- Static nested classes do not require an outer object.
+- Static methods are hidden, not overridden.
+- Static fields are hidden, not overridden.
+- static final is commonly used for constants.
+- Static does not automatically mean immutable.
+- Static does not automatically mean thread-safe.
+- Constructors and local variables cannot be static.
+- Top-level classes cannot be static.
 
 
 # Inheritance  -> done -> single, multi level, hierarchial, hybrid, multiple(interfaces)
