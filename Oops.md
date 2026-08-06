@@ -1158,6 +1158,16 @@ public class InterfaceDemo {
 }
 ```
 
+One class can implement multiple interfaces ie-
+
+class C implements A,B {
+    //execution
+}
+
+>[!WARNING]
+ Multiple Inheritance is implemented by Interfaces in java
+
+
 >[!IMPORTANT]
  @override tells java that ->
  This method is replacing a method inherited from a parent class or interface.
@@ -1201,6 +1211,80 @@ Where static can be used
 - Static does not automatically mean thread-safe.
 - Constructors and local variables cannot be static.
 - Top-level classes cannot be static.
+
+
+# Java Anonymous Class
+
+An anonymous class is a class without a name. It is created and used at the same time.
+You often use anonymous classes to override methods of an existing class or interface, without writing a separate class file.
+Here, we create an anonymous class that extends another class and overrides its method:
+
+```java
+// Normal class
+class Animal {
+  public void makeSound() {
+    System.out.println("Animal sound");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    // Anonymous class that overrides makeSound()
+    Animal myAnimal = new Animal() {
+      public void makeSound() {
+        System.out.println("Woof woof");
+      }
+    }; // semicolon is required to end the line of code that creates the object
+
+    myAnimal.makeSound();
+  }
+}
+```
+output - Woof woof
+
+
+Anonymous Class from an Interface
+You can also use an anonymous class to implement an interface on the fly:
+
+
+```java
+// Interface
+interface Greeting {
+  void sayHello();
+}
+
+public class Main {
+  public static void main(String[] args) {
+    // Anonymous class that implements Greeting
+    Greeting greet = new Greeting() {
+      public void sayHello() {
+        System.out.println("Hello, World!");
+      }
+    };
+
+    greet.sayHello();
+  }
+}
+```
+Output - Hello, World!
+
+>[!WARNING]
+ When to Use Anonymous Classes?
+ Use anonymous classes when you need to create a short class for one-time use. For example:
+ Overriding a method without creating a new subclass
+ Implementing an interface quickly
+ Passing small pieces of behavior as objects
+
+
+
+# Java Enum
+
+An enum is a special "class" that represents a group of constants (unchangeable variables, like final variables).
+To create an enum, use the enum keyword (instead of class or interface), and separate the constants with a comma. Note that they should be in uppercase letters:
+
+
+
+
 
 
 # Inheritance  -> done -> single, multi level, hierarchial, hybrid, multiple(interfaces)

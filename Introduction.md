@@ -656,4 +656,94 @@ for (int[] row : myNumbers) {
 }
 ```
 
+# Java methods
 
+A method is a block of code which only runs when it is called.
+You can pass data, known as parameters, into a method.
+Methods are used to perform certain actions, and they are also known as functions.
+Why use methods? To reuse code: define the code once, and use it many times.
+
+
+```java
+public class Main {
+  static void myMethod() {
+    System.out.println("I just got executed!");
+  }
+
+  public static void main(String[] args) {
+    myMethod();
+  }
+}
+```
+
+
+## Parameters and Arguments
+
+When a parameter is passed to the method, it is called an argument. So, from the example above: fname is a parameter, while Liam, Jenny and Anja are arguments.
+
+```java
+public class Main {
+  static void myMethod(String fname) {
+    System.out.println(fname + " Refsnes");
+  }
+
+  public static void main(String[] args) {
+    myMethod("Liam");
+    myMethod("Jenny");
+    myMethod("Anja");
+  }
+}
+// Liam Refsnes
+// Jenny Refsnes
+// Anja Refsnes
+```
+
+>[!WARNING]
+ Note that when you are working with multiple parameters, the method call must have the same number of arguments as there are parameters, and the arguments must be passed in the same order.
+
+
+# Java input
+
+The Scanner class is used to get user input, and it is found in the java.util package.
+
+
+```java
+import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+
+    System.out.println("Enter name, age and salary:");
+
+    // String input
+    String name = myObj.nextLine();
+
+    // Numerical input
+    int age = myObj.nextInt();
+    double salary = myObj.nextDouble();
+
+    // Output input by user
+    System.out.println("Name: " + name);
+    System.out.println("Age: " + age);
+    System.out.println("Salary: " + salary);
+  }
+}
+```
+Table of input methods supported by Scanner class.
+
+| Method        | Description                         |
+|---------------|-------------------------------------|
+| nextBoolean() | Reads a boolean value from the user |
+| nextByte()    | Reads a byte value from the user    |
+| nextDouble()  | Reads a double value from the user  |
+| nextFloat()   | Reads a float value from the user   |
+| nextInt()     | Reads a int value from the user     |
+| nextLine()    | Reads a String value from the user  |
+| nextLong()    | Reads a long value from the user    |
+| nextShort()   | Reads a short value from the user   |
+
+>[!WARNING]
+ Note: If you enter wrong input (e.g. text in a numerical input), you will get an exception/error message (like "InputMismatchException").
+
+ 
