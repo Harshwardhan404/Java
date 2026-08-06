@@ -12,6 +12,7 @@ System.out.println("Enter your name");
 String name = sc.nextLine();
 
 System.out.println("my name is " + name);
+sc.close();
 
 }
 
