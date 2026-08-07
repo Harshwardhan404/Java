@@ -787,7 +787,6 @@ It often involves:
 
 ## Try catch block
 
-
 Exception handling lets you catch and handle errors during runtime - so your program doesn't crash.
 
 It uses different keywords:
@@ -809,4 +808,129 @@ finally {
 ```
 
 
+## The throw keyword
 
+The throw statement allows you to create a custom error.
+
+The throw statement is used together with an exception type. There are many exception types available in Java: ArithmeticException, FileNotFoundException, ArrayIndexOutOfBoundsException, SecurityException, etc:
+
+
+you can throw custom Exceptions like -> throw new FileNotFoundException("File not found");
+
+example
+```java
+public class Main {
+  static void checkAge(int age) {
+    if (age < 18) {
+      throw new ArithmeticException("Access denied - You must be at least 18 years old.");
+    }
+    else {
+      System.out.println("Access granted - You are old enough!");
+    }
+  }
+
+  public static void main(String[] args) {
+    checkAge(15); // Set age to 15 (which is below 18...)
+  }
+}
+```
+
+Output ->
+Exception in thread "main" java.lang.ArithmeticException: Access denied - You must be at least 18 years old.
+        at Main.checkAge(Main.java:4)
+        at Main.main(Main.java:12)
+
+
+format to throw new error -> throw new Errortype("Message");
+
+
+| Error/Exception                 | Description                                                                    |
+|---------------------------------|--------------------------------------------------------------------------------|
+| ArithmeticException             | Occurs when a numeric calculation goes wrong                                   |
+| ArrayIndexOutOfBoundsException  | Occurs when trying to access an index number that does not exist in an array   |
+| ClassNotFoundException          | Occurs when trying to access a class that does not exist                       |
+| FileNotFoundException           | Occurs when a file cannot be accessed                                          |
+| InputMismatchException          | Occurs when entering wrong input (e.g. text in a numerical input)              |
+| IOException                     | Occurs when an input or output operation fails                                 |
+| NullPointerException            | Occurs when trying to access an object referece that is null                   |
+| NumberFormatException           | Occurs when it is not possible to convert a specified string to a numeric type |
+| StringIndexOutOfBoundsException | Occurs when trying to access a character in a String that does not exist       |
+
+
+
+### Java Multiple Exceptions
+Sometimes, different errors (exceptions) can happen in the same try block. You can handle them with multiple catch blocks.
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    try {
+      int[] numbers = {1, 2, 3};
+      System.out.println(numbers[10]);  // ArrayIndexOutOfBoundsException
+      int result = 10 / 0;              // ArithmeticException
+    } 
+    catch (ArrayIndexOutOfBoundsException e) {
+      System.out.println("Array index does not exist.");
+    } 
+    catch (ArithmeticException e) {
+      System.out.println("Cannot divide by zero.");
+    } 
+    catch (Exception e) {
+      System.out.println("Something else went wrong.");
+    }
+  }
+}
+```
+
+>[!IMPORTANT]
+ Order Matters
+ You should always put more specific exceptions first, and general ones later. Otherwise, the general catch will grab the error and the specific ones will never run.
+
+ ### Multi-Catch
+
+ since Java 7, you can catch multiple exceptions in one catch block using the | symbol. This is useful when different exceptions should be handled in the same way, so you don't have to repeat code:
+
+ ```java
+catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+  System.out.println("Math error or array error occurred.");
+}
+
+ ```
+
+you can catch multiple exceptions with one catch block.
+
+
+### Java Try-with-Resources
+
+Try-with-resources is used with files, streams, database connections, and other resources that must be closed after use.
+Its syntax is:
+`try (resource declaration) { } catch (Exception e) { }`
+Resources should always be closed after use because leaving them open can waste system resources and cause resource leaks.
+Java automatically closes resources declared inside the `try(...)` parentheses when the block finishes, even if an exception occurs. This makes exception handling cleaner and safer because we do not need to close the resource manually.
+
+
+```java
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class Main {
+  public static void main(String[] args) {
+    // resource is opened inside try()
+    try (FileOutputStream output = new FileOutputStream("filename.txt")) {
+      output.write("Hello".getBytes());
+      // no need to call close() here
+      System.out.println("Successfully wrote to the file.");
+    } catch (IOException e) {
+      System.out.println("Error writing file.");
+    }
+  }
+}
+```
+Why use try-with-resources?
+Safer - resources are always closed, even if an exception occurs.
+Cleaner - no need to write close() calls.
+Shorter code - less boilerplate, easier to read.
+
+
+>[!IMPORTANT]
+ Rule of thumb: Whenever you work with files, streams, or database connections, use try-with-resources to make sure they are closed properly.

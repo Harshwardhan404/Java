@@ -1306,10 +1306,52 @@ public class Main {
  Why And When To Use Enums?
  Use enums when you have values that you know aren't going to change, like month days, days, colors, deck of cards, etc.
 
+# Wrapper Classes
 
-|      OOP      |                     Contents                                   |
-|---------------|----------------------------------------------------------------|
-| Inheritance   | single, multi level, hierarchial, hybrid, multiple(interfaces) |
-| polymorphism  | method overloading/ method overriding                          |
-| abstraction   | abstract/ interfaces                                           |
-| incapsulation | getters setters/ validation/ security                          |
+Wrapper classes provide a way to use primitive data types (int, boolean, etc..) as objects.
+The table below shows the primitive type and the equivalent wrapper class:
+
+| Primitive Data Type | Wrapper Class |
+|---------------------|---------------|
+| byte                | Byte          |
+| short               | Short         |
+| int                 | Integer       |
+| long                | Long          |
+| float               | Float         |
+| double              | Double        |
+| boolean             | Boolean       |
+| char                | Character     |
+
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    Integer myInt = 100;
+    String myString = myInt.toString();
+    System.out.println(myString.length());
+  }
+}
+```
+So basically Wrapper classes are used in java to convert primitve data types into objects, 
+the int becomes Integer, we use full form of the datatype and it starts with capital letter.
+
+It is used so we can use class methods on primitve datatypes.
+for Integer we have a pacakge called java.lang.Integer (the java.lang.* is avaialble in all the programs) which is
+automatically imported.
+so does other primitve datatype classes. these clases provides extra add on methods to the objects.(ie Integer, Long) etc 
+
+Creating wrapper classes also help to assign null values to the datatypes.
+ie Integer num = null; // correct
+int num = null; // incorrect.
+
+
+# Summary Table
+
+| OOP           |  Contents                                                        |
+|-------------- | ---------------------------------------------------------------- |
+| Inheritance   | single, multi level, hierarchical, hybrid, multiple (interfaces) |
+| Polymorphism  | method overloading / method overriding                           |
+| Abstraction   | abstract / interfaces                                            |
+| Encapsulation | getters setters / validation / security                          |
+
+
