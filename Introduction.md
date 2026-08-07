@@ -746,4 +746,67 @@ Table of input methods supported by Scanner class.
 >[!WARNING]
  Note: If you enter wrong input (e.g. text in a numerical input), you will get an exception/error message (like "InputMismatchException").
 
- 
+
+# Error handling
+
+Types of Errors in Java
+
+| Error Type         | Description                                                |
+|--------------------|------------------------------------------------------------|
+| Compile-Time Error | Detected by the compiler. Prevents code from running.      |
+| Runtime Error      | Occurs while the program is running. Often causes crashes. |
+| Logical Error      | Code runs but gives incorrect results. Hardest to find.    |
+
+
+1. Compile-Time Errors
+ Compile-time errors occur when the program cannot compile due to syntax or type issues.
+ it prevents code from running, it's basically a syntax erorr, or something wrong with code.
+
+2. Runtime Error
+ Runtime errors occur when the program compiles but crashes or behaves unexpectedly.
+ These type of errors are caught at runtime.
+ eg -
+ ```java
+int[] numbers = {1, 2, 3};
+System.out.println(numbers[8]);
+ ```
+output - Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 8 out of bounds for length 3
+
+3. Logical errors happen when the code runs, but the result is not what you thought
+  Like - System.out.println("Name"+ 32);  // prints Name32 which is a logical error.
+
+
+## What is Debugging?
+Debugging is the process of identifying and fixing errors or bugs in your code.
+
+It often involves:
+- Reading error messages
+- Tracing variable values step by step
+- Testing small pieces of code independently
+
+
+## Try catch block
+
+
+Exception handling lets you catch and handle errors during runtime - so your program doesn't crash.
+
+It uses different keywords:
+The try statement allows you to define a block of code to be tested for errors while it is being executed.
+The catch statement allows you to define a block of code to be executed, if an error occurs in the try block.
+The finally statement lets you execute code, after try...catch, regardless of the result:
+The try and catch keywords come in pairs:
+
+```java
+try {
+  //  Block of code to try
+}
+catch(Exception e) {
+  //  Block of code to handle errors
+}
+finally {
+  System.out.println("This code will be executed no matter what");
+}
+```
+
+
+

@@ -1285,6 +1285,16 @@ public class Main {
 >
 > Why and when to use enums? Use enums when you have values that you know aren't going to change, like month days, days, colors, deck of cards, etc.
 
+
+wrapper class
+
+
+
+
+
+
+
+
 | OOP           | Contents                                                        |
 |-------------- | ---------------------------------------------------------------- |
 | Inheritance   | single, multi level, hierarchical, hybrid, multiple (interfaces) |
